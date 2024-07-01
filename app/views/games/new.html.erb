@@ -1,0 +1,15 @@
+
+
+<h1>Trouvez le mot le plus long</h1>
+<p>Utilisez les lettres suivantes :</p>
+<p><%= @letters.join(" ") %></p>
+
+<%= form_with url: "/score", method: "post", data: { turbo: false } do %>
+  <div class="form-group">
+    <label for="word">Votre mot :</label>
+    <%= text_field_tag :word, nil, class: "form-control" %>
+  </div>
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <%= hidden_field_tag :letters, @letters.join(" ") %>
+  <%= submit_tag "Envoyer", class: "btn btn-primary" %>
+<% end %>
